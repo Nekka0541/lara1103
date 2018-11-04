@@ -16,3 +16,21 @@ Route::get('/home', function () {
     return view('home');
 });
 
+/**
+ * getでauth/registerに飛んだ場合
+ */
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+/**
+ * postでauth/registerに飛んだ場合
+ */
+Route::post('auth/register', 'Auth\RegisterController@register');
+/**
+ * zipcodeから変換
+ */
+Route::get('/zip', function(){
+    return view('zip');
+});
+Route::get('/show', function(){
+    return view('show');
+});
+
