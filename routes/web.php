@@ -25,6 +25,16 @@ Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
  */
 Route::post('auth/register', 'Auth\RegisterController@register');
 /**
+ * login
+ */
+Route::get('/auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('/auth/login', 'Auth\LoginController@Login');
+/**
+ * logout
+ */
+Route::get('/auth/logout', 'Auth\LoginController@logout');
+
+/**
  * zipcodeから変換
  */
 Route::get('/zip', function(){

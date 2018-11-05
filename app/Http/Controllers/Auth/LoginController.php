@@ -3,6 +3,9 @@
 namespace TestLaravel\Http\Controllers\Auth;
 
 use TestLaravel\Http\Controllers\Controller;
+/**
+ * registerに同じくこのuseしてるライブラリにログイン処理とログアウト処理のメソッドが存在している
+ */
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +38,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(\Illuminate\Http\Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        //redirectの引数を/homeに変更
+        return $this->loggedOut($request) ?: redirect('/home');
     }
 }
